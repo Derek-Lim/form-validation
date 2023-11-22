@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Validation</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <form>
+    <div class="header">Random Info</div>
+    <fieldset>
+      <legend>Contact</legend>
+      <label for="mail">
+        <span>Email Address:</span>
+        <input type="email" id="mail" name="mail" required>
+        <span class="error"></span>
+      </label>
+    </fieldset>
+    <fieldset>
+      <legend>Location</legend>
+      <label for="zip">
+        <span>Zip: </span>
+        <input type="text" id ="zip" name="zip" required>
+        <span class="error"></span>
+      </label>
+      <label for="country">
+        <span>Country: </span>
+        <input type="text" id="country" name="country" required>
+        <span class="error"></span>
+      </label>
+    </fieldset>
+    <fieldset>
+      <legend>Security</legend>
+      <label for="password">
+        <span>Password: </span>
+        <input type="password" id="password" name="password" required>
+        <span class="error"></span>
+      </label>
+      <label for="password-confirm">
+        <span>Confirm Password: </span>
+        <input type="password" id="password-confirm" name="password-confirm"
+        required>
+        <span class="error"></span>
+      </label>
+    </fieldset>
+    <button>Submit</button>
+  </form>
+
+</body>
+</html>
