@@ -1,3 +1,4 @@
+const body = document.querySelector('body')
 const form = document.querySelector('form')
 const email = document.querySelector('#mail')
 const emailError = document.querySelector('#mail + span.error')
@@ -66,7 +67,11 @@ form.addEventListener('submit', (event) => {
   } else if (passwordConfirm.value !== password.value) {
     showPasswordConfirmError()
   } else {
-    form.reset()
+    form.remove()
+    const highFive = document.createElement('div')
+    highFive.textContent = 'HIGH FIVE!!!'
+    highFive.style.fontSize = '300px'
+    body.append(highFive)
   }
 })
 
