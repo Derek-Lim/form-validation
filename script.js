@@ -43,7 +43,9 @@ password.addEventListener('input', () => {
   }
 })
 passwordConfirm.addEventListener('input', () => {
-  if (passwordConfirm.value === password.value) {
+  if (!password.validity.valid) {
+    showPasswordConfirmError()
+  } else if (passwordConfirm.value === password.value) {
     passwordConfirmError.textContent = ''
     passwordConfirmError.className = 'error'
   } else {
@@ -61,7 +63,7 @@ form.addEventListener('submit', (event) => {
     showCountryError()
   } else if (!password.validity.valid) {
     showPasswordError()
-  } else if (!passwordConfirm.validity.valid) {
+  } else if (passwordConfirm.value !== password.value) {
     showPasswordConfirmError()
   } else {
     form.reset()
@@ -121,8 +123,16 @@ function showPasswordError () {
   passwordError.className = 'error active'
 }
 function showPasswordConfirmError () {
-  if (passwordConfirm.validity.valueMissing) {
-    passwordConfirmError.textContent = 'Confirm password'
+  if (!password.value) {
+    passwordConfirmError.className = 'error active'
+    passwordConfirmError.textContent = 'Fill the previous field first'
+    passwordConfirm.value = ''
+  } else if (!password.validity.valid) {
+    passwordConfirmError.className = 'error active'
+    passwordConfirmError.textContent = 'Previous field is not valid; correct that first'
+    passwordConfirm.value = ''
+  } else if (passwordConfirm.validity.valueMissing) {
+    passwordConfirmError.textContent = 'Enter password again'
   } else if (passwordConfirm.value !== password.value) {
     passwordConfirmError.textContent = 'Entered password does not match previously entered password'
   }
